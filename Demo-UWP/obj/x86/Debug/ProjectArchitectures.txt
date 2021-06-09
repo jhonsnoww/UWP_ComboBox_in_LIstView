@@ -1,0 +1,1 @@
+C:\Users\Code2\source\repos\Demo-UWP\Demo-UWP\Demo-UWP.csproj;x86
