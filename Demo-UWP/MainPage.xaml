@@ -16,7 +16,7 @@
                 Name="MainLV"
                 Grid.Row="0"
                 Margin="10,10,10,10"
-                SelectionMode="Single"
+                SelectionMode="None"
                 ShowsScrollingPlaceholders="True">
 
 
@@ -27,11 +27,18 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Column="0" Text="Name" />
                             <TextBlock Grid.Column="1" Text="Color" />
                             <TextBlock Grid.Column="2" Text="Type" />
+                            <Button
+                                x:Name="More"
+                                Grid.Column="3"
+                                Width="Auto"
+                                Click="More_Click"
+                                Content="More" />
 
                         </Grid>
                     </DataTemplate>
@@ -41,6 +48,7 @@
                     <DataTemplate x:DataType="data:Pet">
                         <Grid>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
@@ -56,11 +64,19 @@
                                 Width="auto"
                                 DisplayMemberPath="CbName"
                                 ItemsSource="{x:Bind petTypes}"
-                                SelectedValue="{Binding animal, Mode=TwoWay}"
-                                SelectedValuePath="CbID"
-                                SelectionChanged="cbPetType_Changed">
-                            </ComboBox>
+                                SelectedValue="{Binding animal, Mode=OneTime}"
+                                SelectedValuePath="CbName"
+                                SelectionChanged="cbPetType_Changed" />
 
+                            <ComboBox
+                                x:Name="cbPetSubType"
+                                Grid.Column="3"
+                                Width="auto"
+                                DisplayMemberPath="CbName"
+                                ItemsSource="{x:Bind petSubTypes}"
+                                SelectedValue="{Binding animal, Mode=OneWay}"
+                                SelectedValuePath="CbName"
+                                SelectionChanged="cbPetSubType_SelectionChanged" />
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -85,6 +101,10 @@
                 Margin="10"
                 Click="testButton_Click"
                 Content="Test" />
+            <Button
+                x:Name="ChangeDatda"
+                Click="ChangeDatda_Click"
+                Content="ChangeData" />
         </StackPanel>
     </Grid>
 </Page>

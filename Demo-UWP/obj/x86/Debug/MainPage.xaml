@@ -27,11 +27,18 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Column="0" Text="Name" />
                             <TextBlock Grid.Column="1" Text="Color" />
                             <TextBlock Grid.Column="2" Text="Type" />
+                            <Button x:ConnectionId='7'
+                                x:Name="More"
+                                Grid.Column="3"
+                                Width="Auto"
+                                                  
+                                Content="More" />
 
                         </Grid>
                     </DataTemplate>
@@ -39,8 +46,9 @@
 
                 <ListView.ItemTemplate>
                     <DataTemplate                      >
-                        <Grid x:ConnectionId='7'>
+                        <Grid x:ConnectionId='9'>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
@@ -50,19 +58,25 @@
 
                             <TextBox Grid.Column="1" Text="{Binding color, Mode=TwoWay}" />
 
-                            <ComboBox x:ConnectionId='8'
+                            <ComboBox x:ConnectionId='10'
                                 x:Name="cbPetType"
                                 Grid.Column="2"
                                 Width="auto"
                                 DisplayMemberPath="CbName"
                                                                
-                                SelectedValue="{Binding animal, Mode=TwoWay}"
-                                SelectedValuePath="CbID"
-                                                                    >
+                                SelectedValue="{Binding animal, Mode=OneTime}"
+                                SelectedValuePath="CbName"
+                                                                     />
 
-                                <!--  when this is included I get the error mentioned earlier  -->
-                            </ComboBox>
-
+                            <ComboBox x:ConnectionId='11'
+                                x:Name="cbPetSubType"
+                                Grid.Column="3"
+                                Width="auto"
+                                DisplayMemberPath="CbName"
+                                                                  
+                                SelectedValue="{Binding animal, Mode=OneWay}"
+                                SelectedValuePath="CbName"
+                                                                                 />
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -87,6 +101,10 @@
                 Margin="10"
                                         
                 Content="Test" />
+            <Button x:ConnectionId='5'
+                x:Name="ChangeDatda"
+                                         
+                Content="ChangeData" />
         </StackPanel>
     </Grid>
 </Page>
